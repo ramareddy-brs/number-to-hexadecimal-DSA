@@ -1,21 +1,32 @@
-function toHex(num) {
-  if (num === 0) {
-      return "0";
+function convertToHex() {
+  const decimalInput = document.getElementById('decimalInput').value;
+  const hexOutput = document.getElementById('hexOutput');
+
+  if (isNaN(decimalInput)) {
+    hexOutput.textContent = 'Please enter a valid number.';
+    return;
   }
 
-  const hexChars = "0123456789abcdef";
-  let result = "";
-
-  while (num !== 0) {
-      const digit = num & 15;
-      result = hexChars[digit] + result;
-      num >>>= 4;
+  const num = parseInt(decimalInput, 10);
+  if (num < 0) {
+    hexOutput.textContent = 'Negative numbers not supported.';
+    return;
   }
 
-  return result;
+  const hexString = decimalToHex(num);
+  hexOutput.textContent = `Hexadecimal representation: ${hexString}`;
 }
 
+function decimalToHex(num) {
+  if (num === 0) return '0';
 
-const num = 26;
-const result = toHex(num);
-console.log(result); 
+  let hex = '';
+  const hexChars = '0123456789abcdef';
+
+  while (num > 0) {
+    hex = hexChars[num % 16] + hex;
+    num = Math.floor(num / 16);
+  }
+
+  return hex;
+}

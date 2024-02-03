@@ -26,6 +26,11 @@
       <p class="text-start">
         This code uses a bitwise AND operation with 15 (binary 1111) to get the last 4 bits of the number, and then shifts the number to the right by 4 bits in each iteration until the number becomes 0. The result is a hexadecimal representation of the given integer
       </p>
+
+      <label for="decimalInput">Enter Decimal Number:</label>
+      <input type="number" id="decimalInput">
+      <button onclick="convertToHex()">Convert to Hex</button>
+      <p id="hexOutput">Hexadecimal representation will be displayed here.</p>
     </main>
 
     <footer class="footer footer-dark">
